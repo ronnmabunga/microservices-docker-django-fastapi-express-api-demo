@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+    express:
+        build:
+            context: .
+            dockerfile: express-user-service/Dockerfile
+        ports:
+            - "3001:3001"
+        networks:
+            - app-network
+
+    fastapi:
+        build:
+            context: .
+            dockerfile: fastapi-task-service/Dockerfile
+        ports:
+            - "8001:8001"
+        networks:
+            - app-network
+
+    django:
+        build:
+            context: .
+            dockerfile: django-main/Dockerfile
+        ports:
+            - "8000:8000"
+        depends_on:
+            - express
+            - fastapi
+        networks:
+            - app-network
+
+networks:
+    app-network:
+        driver: bridge
