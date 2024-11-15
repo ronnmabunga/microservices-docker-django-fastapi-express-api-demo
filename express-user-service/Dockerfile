@@ -3,11 +3,11 @@ FROM node:16-slim
 
 WORKDIR /app
 
-COPY express-user-service/package.json .
+COPY ./package.json .
 RUN npm install
 
-COPY express-user-service /app
+COPY ./ /app
 
-EXPOSE 3001
+EXPOSE 8003
 
 CMD ["node", "index.js"]

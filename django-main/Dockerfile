@@ -4,11 +4,11 @@ FROM python:3.10-slim
 ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
-COPY django-main/requirements.txt .
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY django-main /app
+COPY ./ /app
 
-EXPOSE 8000
+EXPOSE 8001
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]

@@ -3,11 +3,11 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-COPY fastapi-task-service/requirements.txt .
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY fastapi-task-service /app
+COPY ./ /app
 
-EXPOSE 8001
+EXPOSE 8002
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8001"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8002"]

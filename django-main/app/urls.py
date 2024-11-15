@@ -4,7 +4,7 @@ import requests
 
 
 def proxy_to_express(request, path):
-    target_url = f"http://express:3001/{path}"
+    target_url = f"http://express:8003/{path}"
     try:
         response = requests.get(target_url)
         return JsonResponse(response.json(), status=response.status_code)
@@ -13,7 +13,7 @@ def proxy_to_express(request, path):
 
 
 def proxy_to_fastapi(request, path):
-    target_url = f"http://fastapi:8001/{path}"
+    target_url = f"http://fastapi:8002/{path}"
     try:
         response = requests.get(target_url)
         return JsonResponse(response.json(), status=response.status_code)
